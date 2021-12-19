@@ -1,13 +1,17 @@
 package main
-
 import "github.com/gin-gonic/gin"
 
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
+
+	// Creates a gin router with default middleware
+	router  := gin.Default()
+
+	// A handler for GET request on /example
+	router.GET("/example", func(c *gin.Context) {
+		
 		c.JSON(200, gin.H{
-			"message": "pong",
-		})
+			"message": "example",
+		}) // gin.H is a shortcut for map[string]interface{}
 	})
-	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	router.Run() // listen and serve on port 8080
 }
